@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+/* Hide scrollbar (used for mobile memories strip) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
