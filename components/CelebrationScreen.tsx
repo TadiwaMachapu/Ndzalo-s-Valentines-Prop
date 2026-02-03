@@ -106,7 +106,7 @@ export default function CelebrationScreen({ recipientName, whatsappUrl, pickupTi
             
             <p className="text-white/70 text-xs font-medium mb-2 font-poppins uppercase tracking-wider">Memory Unlocked</p>
             <h3 className="text-2xl font-bold text-white mb-1 font-sora">Valentine's 2026</h3>
-            <p className="text-white/80 text-lg font-poppins">{recipientName} & You 💖</p>
+            <p className="text-white/80 text-lg font-poppins">{recipientName} & Tadiwa 💖</p>
             
             <div className="mt-4 pt-4 border-t border-white/10">
               <p className="text-white/60 text-xs font-poppins italic">
