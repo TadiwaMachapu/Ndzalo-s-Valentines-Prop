@@ -26,8 +26,12 @@ const dancingScript = Dancing_Script({
 })
 
 export const metadata: Metadata = {
-  title: 'Will you be my Valentine? 💖',
-  description: 'A special Valentine proposal',
+  title: '✨ Something Special ✨',
+  description: 'You have been invited to something special...',
+  openGraph: {
+    title: '✨ A Secret Awaits ✨',
+    description: 'Someone has something to tell you...',
+  },
 }
 
 export default function RootLayout({
