@@ -13,7 +13,11 @@ interface BokehBlob {
   delay: number
 }
 
-export default function BackgroundBokeh() {
+interface BackgroundBokehProps {
+  mood?: 'calm' | 'celebration' | 'rejection'
+}
+
+export default function BackgroundBokeh({ mood = 'calm' }: BackgroundBokehProps) {
   const [mounted, setMounted] = useState(false)
   const [blobs, setBlobs] = useState<BokehBlob[]>([])
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
@@ -52,21 +56,16 @@ export default function BackgroundBokeh() {
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      <div
+      <motion.div 
         className="absolute inset-0"
-        style={{
-          background: `linear-gradient(
-            135deg,
-            #1e1b4b 0%,
-            #4c1d95 22%,
-            #7c3aed 42%,
-            #a855f7 52%,
-            #c026d3 62%,
-            #db2777 78%,
-            #be185d 90%,
-            #831843 100%
-          )`,
+        animate={{
+          background: mood === 'celebration'
+            ? `linear-gradient(135deg, #831843 0%, #be185d 15%, #db2777 35%, #ec4899 50%, #f472b6 65%, #fb7185 80%, #fda4af 100%)`
+            : mood === 'rejection'
+            ? `linear-gradient(135deg, #1e1b4b 0%, #3730a3 25%, #4c1d95 50%, #6b21a8 75%, #7c3aed 100%)`
+            : `linear-gradient(135deg, #1e1b4b 0%, #4c1d95 22%, #7c3aed 42%, #a855f7 52%, #c026d3 62%, #db2777 78%, #be185d 90%, #831843 100%)`
         }}
+        transition={{ duration: 1, ease: 'easeInOut' }}
       />
 
       {mounted && blobs.map((blob) => (

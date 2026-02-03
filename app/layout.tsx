@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Poppins, Sora } from 'next/font/google'
+import { Inter, Poppins, Sora, Dancing_Script } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({
@@ -19,6 +19,12 @@ const sora = Sora({
   variable: '--font-sora',
 })
 
+const dancingScript = Dancing_Script({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-dancing',
+})
+
 export const metadata: Metadata = {
   title: 'Will you be my Valentine? 💖',
   description: 'A special Valentine proposal',
@@ -31,7 +37,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${poppins.variable} ${sora.variable} font-sans`}>
+      <body className={`${inter.variable} ${poppins.variable} ${sora.variable} ${dancingScript.variable} font-sans`}>
         {children}
       </body>
     </html>

@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 interface CelebrationScreenProps {
@@ -9,8 +10,15 @@ interface CelebrationScreenProps {
 }
 
 export default function CelebrationScreen({ recipientName, whatsappUrl, pickupTime }: CelebrationScreenProps) {
+  const [showMemory, setShowMemory] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowMemory(true), 2200)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
-    <div className="relative w-full max-w-md mx-auto">
+    <div className="relative w-full max-w-md mx-auto space-y-6">
       <div className="absolute inset-0 rounded-3xl" style={{ background: 'rgba(255,255,255,0.05)', transform: 'translate(8px, 8px) rotate(2deg)' }} />
       <div className="absolute inset-0 rounded-3xl" style={{ background: 'rgba(255,255,255,0.08)', transform: 'translate(4px, 4px) rotate(1deg)' }} />
 
@@ -70,6 +78,44 @@ export default function CelebrationScreen({ recipientName, whatsappUrl, pickupTi
           </button>
         </motion.a>
       </motion.div>
+
+      {/* Memory Unlocked Card */}
+      {showMemory && (
+        <motion.div
+          initial={{ opacity: 0, y: 20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.6, type: 'spring', stiffness: 200 }}
+          className="relative"
+        >
+          <div
+            className="relative rounded-2xl p-6 text-center overflow-hidden"
+            style={{
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 100%)',
+              backdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255,255,255,0.2)',
+              boxShadow: '0 8px 24px rgba(0,0,0,0.15), 0 0 40px rgba(251,113,133,0.2)',
+            }}
+          >
+            <motion.div
+              className="absolute top-2 right-2 text-2xl"
+              animate={{ rotate: [0, 10, -10, 0], scale: [1, 1.1, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              ✨
+            </motion.div>
+            
+            <p className="text-white/70 text-xs font-medium mb-2 font-poppins uppercase tracking-wider">Memory Unlocked</p>
+            <h3 className="text-2xl font-bold text-white mb-1 font-sora">Valentine's 2026</h3>
+            <p className="text-white/80 text-lg font-poppins">{recipientName} & You 💖</p>
+            
+            <div className="mt-4 pt-4 border-t border-white/10">
+              <p className="text-white/60 text-xs font-poppins italic">
+                This moment is screenshot-worthy 📸
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      )}
     </div>
   )
 }

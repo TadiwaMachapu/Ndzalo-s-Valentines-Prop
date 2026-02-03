@@ -1,18 +1,37 @@
 'use client'
 
-import { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import DodgingButton from './DodgingButton'
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import DodgingNoButton from './DodgingNoButton'
 
 interface MainValentineCardProps {
   recipientName: string
   onYes: () => void
   onNo: () => void
   noCount: number
+  dodgeLevel: number
+  onDodgeLevelChange: (level: number) => void
+  onOpenLetter: () => void
 }
 
-export default function MainValentineCard({ recipientName, onYes, onNo, noCount }: MainValentineCardProps) {
-  const [isLetterOpen, setIsLetterOpen] = useState(false)
+export default function MainValentineCard({ recipientName, onYes, onNo, noCount, dodgeLevel, onDodgeLevelChange, onOpenLetter }: MainValentineCardProps) {
+  const [showSoftLine, setShowSoftLine] = useState(false)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+
+  useEffect(() =>{
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setPrefersReducedMotion(motionQuery.matches)
+    const handleChange = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches)
+    motionQuery.addEventListener('change', handleChange)
+    return () => motionQuery.removeEventListener('change', handleChange)
+  }, [])
+
+  useEffect(() => {
+    if (!prefersReducedMotion) {
+      const timer = setTimeout(() => setShowSoftLine(true), 2000)
+      return () => clearTimeout(timer)
+    }
+  }, [prefersReducedMotion])
 
   return (
     <div className="relative w-full max-w-md mx-auto">
@@ -74,45 +93,31 @@ export default function MainValentineCard({ recipientName, onYes, onNo, noCount 
           {recipientName}… will you be my Valentine?
         </h1>
 
-        <p className="text-base sm:text-lg text-white/85 text-center mb-5 font-poppins">I planned something special for us 😌 ✨</p>
+        <p className="text-base sm:text-lg text-white/85 text-center mb-2 font-poppins">I planned something special for us 😌 ✨</p>
+
+        {showSoftLine && (
+          <motion.p
+            className="text-sm text-white/60 text-center mb-5 font-poppins italic"
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+          >
+            No rush… but my heart is already leaning one way 🫶
+          </motion.p>
+        )}
 
         <div className="flex justify-center mb-5">
           <motion.button
-            onClick={() => setIsLetterOpen((v) => !v)}
+            onClick={onOpenLetter}
             className="group flex items-center gap-2 px-5 py-2.5 rounded-full text-white/80 hover:text-white transition-colors font-poppins text-sm"
             style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)', border: '1px solid rgba(255,255,255,0.15)' }}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
           >
             <span>💌</span>
-            <span>{isLetterOpen ? 'Close letter' : 'Open letter'}</span>
-            <motion.span animate={{ rotate: isLetterOpen ? 180 : 0 }} transition={{ duration: 0.25 }}>
-              ↓
-            </motion.span>
+            <span>Open letter</span>
           </motion.button>
         </div>
-
-        <AnimatePresence>
-          {isLetterOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.35, ease: 'easeOut' }}
-              className="overflow-hidden mb-5"
-            >
-              <div
-                className="p-5 rounded-2xl text-center"
-                style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%)', border: '1px solid rgba(255,255,255,0.15)' }}
-              >
-                <p className="text-white/90 text-sm sm:text-base leading-relaxed italic font-poppins">
-                  &ldquo;I know life gets busy, but I want you to know you&apos;re my favorite person… I&apos;d love to make a memory with you this Valentine&apos;s 💗&rdquo;
-                </p>
-                <p className="mt-3 text-white/60 text-xs font-poppins">— With all my love 💖</p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <motion.button
@@ -136,7 +141,9 @@ export default function MainValentineCard({ recipientName, onYes, onNo, noCount 
             <span className="relative z-10">Yes 💘</span>
           </motion.button>
 
-          <DodgingButton onClick={onNo}>Nope 😅</DodgingButton>
+          <DodgingNoButton onClick={onNo} dodgeLevel={dodgeLevel} onDodgeLevelChange={onDodgeLevelChange}>
+            Nope 😅
+          </DodgingNoButton>
         </div>
 
         {noCount > 0 && (
