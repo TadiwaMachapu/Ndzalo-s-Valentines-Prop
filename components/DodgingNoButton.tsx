@@ -80,7 +80,7 @@ export default function DodgingNoButton({ children, onClick, dodgeLevel, onDodge
     <motion.button
       ref={ref}
       type="button"
-      className="relative px-10 py-4 rounded-full font-semibold text-white font-poppins"
+      className="relative px-8 sm:px-10 py-3 sm:py-4 rounded-full font-semibold text-white font-poppins text-base sm:text-lg"
       style={{
         background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%)',
         border: '1px solid rgba(255,255,255,0.2)',

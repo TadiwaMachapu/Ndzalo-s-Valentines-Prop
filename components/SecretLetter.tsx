@@ -48,14 +48,14 @@ export default function SecretLetter({ isOpen, onClose }: SecretLetterProps) {
             role="dialog"
             aria-modal="true"
             aria-labelledby="letter-title"
-            className="fixed inset-x-4 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2 bottom-0 sm:bottom-auto sm:top-1/2 sm:-translate-y-1/2 w-auto sm:w-[500px] max-w-full z-[999]"
+            className="fixed inset-x-4 sm:inset-x-8 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 bottom-0 md:bottom-auto md:top-1/2 md:-translate-y-1/2 w-auto md:w-[500px] max-w-full z-[999]"
             initial={{ y: '100%', opacity: 0, scale: 0.95 }}
             animate={{ y: 0, opacity: 1, scale: 1 }}
             exit={{ y: '100%', opacity: 0, scale: 0.95 }}
             transition={{ type: 'spring', damping: 30, stiffness: 300 }}
           >
             <div
-              className="relative rounded-t-3xl sm:rounded-3xl p-8 sm:p-10 overflow-hidden"
+              className="relative rounded-t-3xl md:rounded-3xl p-6 sm:p-8 md:p-10 overflow-hidden max-h-[85vh] overflow-y-auto"
               style={{
                 background: 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fde68a 100%)',
                 boxShadow: '0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.5)',
@@ -98,19 +98,19 @@ export default function SecretLetter({ isOpen, onClose }: SecretLetterProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                <p className="text-2xl sm:text-3xl leading-relaxed mb-4">
+                <p className="text-xl sm:text-2xl md:text-3xl leading-relaxed mb-3 sm:mb-4">
                   Ndzalo,
                 </p>
-                <p className="text-xl sm:text-2xl leading-relaxed mb-4">
+                <p className="text-lg sm:text-xl md:text-2xl leading-relaxed mb-3 sm:mb-4">
                   I don&apos;t always say it out loud, but you&apos;re my favorite part of every day.
                 </p>
-                <p className="text-xl sm:text-2xl leading-relaxed mb-4">
+                <p className="text-lg sm:text-xl md:text-2xl leading-relaxed mb-3 sm:mb-4">
                   I love the way you make ordinary moments feel special.
                 </p>
-                <p className="text-xl sm:text-2xl leading-relaxed mb-4">
+                <p className="text-lg sm:text-xl md:text-2xl leading-relaxed mb-3 sm:mb-4">
                   This Valentine&apos;s, I just want time with you — laughs, good food, and a memory we&apos;ll keep.
                 </p>
-                <p className="text-xl sm:text-2xl leading-relaxed mb-2">
+                <p className="text-lg sm:text-xl md:text-2xl leading-relaxed mb-2">
                   Will you be my date?{' '}
                   <motion.span
                     className="inline-block"

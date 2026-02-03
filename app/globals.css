@@ -5,13 +5,23 @@
 html,
 body {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Hide scrollbar (used for mobile memories strip) */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Improve touch targets on mobile */
+@media (max-width: 640px) {
+  button {
+    min-height: 44px;
+  }
 }

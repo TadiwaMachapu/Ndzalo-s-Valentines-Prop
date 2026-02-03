@@ -23,7 +23,7 @@ export default function CelebrationScreen({ recipientName, whatsappUrl, pickupTi
       <div className="absolute inset-0 rounded-3xl" style={{ background: 'rgba(255,255,255,0.08)', transform: 'translate(4px, 4px) rotate(1deg)' }} />
 
       <motion.div
-        className="relative rounded-3xl p-8 sm:p-10 overflow-hidden"
+        className="relative rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 overflow-hidden"
         style={{
           background: 'linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.08) 100%)',
           backdropFilter: 'blur(20px)',
@@ -37,7 +37,7 @@ export default function CelebrationScreen({ recipientName, whatsappUrl, pickupTi
       >
         <div className="text-center mb-6">
           <motion.h1
-            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 font-sora"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 font-sora leading-tight"
             initial={{ y: 10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.05 }}
@@ -50,7 +50,7 @@ export default function CelebrationScreen({ recipientName, whatsappUrl, pickupTi
           >
             YAY {recipientName}!! 🎉💞
           </motion.h1>
-          <p className="text-xl sm:text-2xl text-white/90 font-poppins">It&apos;s a date! I&apos;ll pick you up at {pickupTime} 😌</p>
+          <p className="text-lg sm:text-xl md:text-2xl text-white/90 font-poppins">It&apos;s a date! I can&apos;t wait to spend time with you 😌💞</p>
         </div>
 
         <motion.div className="flex justify-center mb-8" animate={{ y: [0, -14, 0] }} transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}>
@@ -61,7 +61,7 @@ export default function CelebrationScreen({ recipientName, whatsappUrl, pickupTi
 
         <motion.a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="block" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
           <button
-            className="w-full px-8 py-4 rounded-full font-semibold text-white overflow-hidden group relative font-poppins"
+            className="w-full px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-white overflow-hidden group relative font-poppins text-base sm:text-lg"
             style={{ background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #15803d 100%)', boxShadow: '0 4px 20px rgba(34,197,94,0.4)' }}
           >
             <span className="relative z-10 flex items-center justify-center gap-2">

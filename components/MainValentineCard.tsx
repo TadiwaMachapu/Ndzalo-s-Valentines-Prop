@@ -45,7 +45,7 @@ export default function MainValentineCard({ recipientName, onYes, onNo, noCount,
       />
 
       <motion.div
-        className="relative rounded-3xl p-6 sm:p-8 overflow-hidden"
+        className="relative rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 overflow-hidden"
         style={{
           background: 'linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.08) 100%)',
           backdropFilter: 'blur(20px)',
@@ -81,7 +81,7 @@ export default function MainValentineCard({ recipientName, onYes, onNo, noCount,
         </div>
 
         <h1
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 font-sora"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-3 font-sora leading-tight"
           style={{
             background: 'linear-gradient(135deg, #ffffff 0%, #fce7f3 40%, #fbcfe8 70%, #f9a8d4 100%)',
             WebkitBackgroundClip: 'text',
@@ -93,7 +93,7 @@ export default function MainValentineCard({ recipientName, onYes, onNo, noCount,
           {recipientName}… will you be my Valentine?
         </h1>
 
-        <p className="text-base sm:text-lg text-white/85 text-center mb-2 font-poppins">I planned something special for us 😌 ✨</p>
+        <p className="text-sm sm:text-base md:text-lg text-white/85 text-center mb-2 font-poppins">I planned something special for us 😌 ✨</p>
 
         {showSoftLine && (
           <motion.p
@@ -119,10 +119,10 @@ export default function MainValentineCard({ recipientName, onYes, onNo, noCount,
           </motion.button>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center w-full">
           <motion.button
             onClick={onYes}
-            className="relative px-10 py-4 rounded-full font-semibold text-white overflow-hidden group font-poppins"
+            className="relative px-8 sm:px-10 py-3 sm:py-4 rounded-full font-semibold text-white overflow-hidden group font-poppins text-base sm:text-lg"
             style={{
               background: 'linear-gradient(135deg, #ec4899 0%, #db2777 50%, #be185d 100%)',
               boxShadow: '0 4px 20px rgba(236,72,153,0.4), 0 0 40px rgba(236,72,153,0.2)',

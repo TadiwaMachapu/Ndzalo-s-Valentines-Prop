@@ -144,12 +144,12 @@ export default function IntroGiftCard({ recipientName, onComplete }: IntroGiftCa
   if (!mounted) return null
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-0">
       {/* Main Gift Card Container - Only show until transition starts */}
       <AnimatePresence mode="wait">
         {phase !== 'transition' && phase !== 'done' && (
           <motion.div
-            className="relative"
+            className="relative max-w-full"
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -30, scale: 0.92 }}
@@ -232,16 +232,16 @@ export default function IntroGiftCard({ recipientName, onComplete }: IntroGiftCa
             transition={{ delay: 0.5, duration: 0.5 }}
           >
             <motion.p
-              className="text-white/90 text-lg font-medium font-poppins flex items-center gap-2 justify-center"
+              className="text-white/90 text-base sm:text-lg font-medium font-poppins flex items-center gap-2 justify-center px-4"
               animate={!prefersReducedMotion ? { y: [0, -4, 0] } : {}}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
             >
               <span>✨</span>
-              <span>Pull the ribbon to open your gift</span>
+              <span className="text-center">Pull the ribbon to open your gift</span>
               <span>🎀</span>
             </motion.p>
             <motion.p
-              className="text-white/50 text-sm mt-2 font-poppins"
+              className="text-white/50 text-xs sm:text-sm mt-2 font-poppins px-4 text-center"
               animate={!prefersReducedMotion ? { opacity: [0.5, 0.8, 0.5] } : {}}
               transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
             >

@@ -28,6 +28,11 @@ const dancingScript = Dancing_Script({
 export const metadata: Metadata = {
   title: '✨ Something Special ✨',
   description: 'You have been invited to something special...',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
   openGraph: {
     title: '✨ A Secret Awaits ✨',
     description: 'Someone has something to tell you...',

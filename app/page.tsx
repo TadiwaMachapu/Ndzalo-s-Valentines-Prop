@@ -93,7 +93,7 @@ export default function Home() {
   const backgroundMood = screen === 'yes' ? 'celebration' : screen === 'nope' ? 'rejection' : 'calm'
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
+    <main className="min-h-screen flex flex-col items-center justify-center p-2 sm:p-4 relative overflow-hidden">
       <BackgroundBokeh mood={backgroundMood} />
       <FloatingHearts />
       {showConfetti && <Confetti />}
@@ -125,12 +125,12 @@ export default function Home() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, scale: 0.97 }}
               transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-              className="w-full"
+              className="w-full px-2 sm:px-4"
             >
-              <div className="flex items-center justify-center gap-8 lg:gap-12">
+              <div className="flex items-center justify-center gap-4 lg:gap-8 xl:gap-12">
                 <PhotoSideStack images={leftPhotos} alignment="left" captions={STORY_CAPTIONS.slice(0, 4)} />
 
-                <div className="relative z-10 flex-shrink-0">
+                <div className="relative z-10 flex-shrink-0 w-full lg:w-auto">
                   <MainValentineCard 
                     recipientName={GIRLFRIEND_NAME} 
                     onYes={handleYes} 
